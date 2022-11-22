@@ -1,3 +1,54 @@
+
+## Project Description
+This project allows you to fetch and store photo from twitter
+
+#### How to use
+
+There are 3 http endpoints.
+
+1. Post request to download the image from twitter by provided user's name (hanlde)
+``` 
+POST /scrape/
+{ "handle": "somehandle" } 
+```
+2. Fetch all users with handles and image links
+``` 
+ GET /users/ 
+```
+##### NOTE: You can use pagination to limit the data from the response
+
+```  
+/users?limit=2&last={handle}
+```
+limit - Is a item's limit per response
+last - the "LastEvaluatedKey" value provided by response.  
+``` 
+ "LastEvaluatedKey": {
+    "handle": {
+      "S": "leo"
+    }
+  }
+```
+based on this response should be provided ```leo```
+3. Get the user image by provided handle
+``` 
+GET /user/{handle}/profile_pic 
+```
+
+ 
+> No authorization is required
+>  
+> Endpoint to use 
+>
+>  https://2z21hcbvj4.execute-api.us-west-2.amazonaws.com/Prod/
+>  
+>  Based on hello_world template
+>  
+>  Use docker
+>  
+>  Use Selenium
+
+
 # allen-first
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
@@ -128,6 +179,3 @@ aws cloudformation delete-stack --stack-name allen-first
 See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
 
 Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
-
-## Project Description
-This project allows you to fetch 
